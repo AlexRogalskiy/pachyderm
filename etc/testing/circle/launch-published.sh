@@ -18,7 +18,3 @@ kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
 kubectl wait --for=condition=ready pod -l release=loki --timeout=5m
 
 pachctl config update context "$(pachctl config get active-context)" --pachd-address="$(minikube ip):30650"
-
-
-helm repo add pach https://helm.pachyderm.com
-helm repo update
