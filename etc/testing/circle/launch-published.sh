@@ -10,7 +10,9 @@ kubectl apply -f etc/testing/minio.yaml
 
 helm repo add pach https://helm.pachyderm.com
 helm repo update
-helm install pachyderm -f etc/testing/circle/helm-values.yaml pach/pachyderm --version 2.0.4
+
+VERSION="2.0.4"
+helm install pachyderm -f etc/testing/circle/helm-values.yaml pach/pachyderm --version "$VERSION" --set pachd.image.tag="$VERSION"
 
 kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
 
