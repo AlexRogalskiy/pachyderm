@@ -14,7 +14,7 @@ helm repo update
 VERSION="2.0.4"
 helm install pachyderm -f etc/testing/circle/helm-values.yaml pach/pachyderm --version "$VERSION" --set pachd.image.tag="$VERSION"
 
-kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
+kubectl wait --for=condition=ready pod -l app=pachd --timeout=10m
 
 # Wait for loki to be deployed
 kubectl wait --for=condition=ready pod -l release=loki --timeout=5m
